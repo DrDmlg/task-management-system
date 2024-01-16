@@ -3,6 +3,7 @@ package com.example.taskmanagementsystem.service;
 import com.example.taskmanagementsystem.entity.Employee;
 
 import com.example.taskmanagementsystem.repository.EmployeeRepository;
+import com.example.taskmanagementsystem.util.EmployeeUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,5 +41,10 @@ public class EmployeeService {
         } catch (Exception e) {
 
         }
+    }
+
+    public void create(Employee employee) {
+        Employee convert = EmployeeUtil.convert(employee);
+        employeeRepository.save(convert);
     }
 }

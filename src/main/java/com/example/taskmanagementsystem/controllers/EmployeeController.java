@@ -36,4 +36,10 @@ public class EmployeeController {
         employeeService.deleteById(id);
         return HttpStatus.OK;
     }
+
+    @PostMapping
+    public HttpStatus create(@RequestBody Employee employee) {
+        employeeService.create(employee);
+        return HttpStatus.OK;
+    }
 }
