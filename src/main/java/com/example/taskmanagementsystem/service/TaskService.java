@@ -5,6 +5,7 @@ import com.example.taskmanagementsystem.entity.Task;
 import com.example.taskmanagementsystem.enums.Role;
 import com.example.taskmanagementsystem.enums.Status;
 import com.example.taskmanagementsystem.repository.TaskRepository;
+import com.example.taskmanagementsystem.util.TaskUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -65,5 +66,11 @@ public class TaskService {
         Task task = getTaskById(taskId);
         task.setStatus(status);
         taskRepository.save(task);
+    }
+
+    @Transactional
+    public void create(Task task) {
+        Task convertTask = TaskUtil.convert(task);
+        taskRepository.save(convertTask);
     }
 }

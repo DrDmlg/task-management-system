@@ -79,4 +79,11 @@ public class TaskController {
         taskService.updateTaskStatus(taskId, status);
         return HttpStatus.OK;
     }
+
+    @PostMapping("/add")
+    public HttpStatus create(
+            @RequestBody Task task) {
+        taskService.create(task);
+        return HttpStatus.OK;
+    }
 }
