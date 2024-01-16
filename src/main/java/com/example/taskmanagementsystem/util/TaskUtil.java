@@ -7,15 +7,15 @@ import org.springframework.stereotype.Component;
 public class TaskUtil {
 
     public static Task convert(Task task) {
-        Task newTask = new Task();
-        newTask.setId(task.getId());
-        newTask.setTitle(task.getTitle());
-        newTask.setDescription(task.getDescription());
-        newTask.setStatus(task.getStatus());
-        newTask.setPriority(task.getPriority());
-        newTask.setAuthor(task.getAuthor());
-        newTask.setExecutor(task.getExecutor());
-        newTask.setComment(task.getComment());
-        return newTask;
+        return Task.builder()
+                .id(task.getId())
+                .title(task.getTitle())
+                .description(task.getDescription())
+                .status(task.getStatus())
+                .priority(task.getPriority())
+                .author(task.getAuthor())
+                .executor(task.getExecutor())
+                .comment(task.getComment())
+                .build();
     }
 }

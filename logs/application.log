@@ -52,3 +52,19 @@
 22:18:05.952 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - Started TaskManagementSystemApplication in 6.471 seconds (process running for 7.67)
 22:18:08.283 [http-nio-8080-exec-2] INFO  c.e.t.aspects.LoggingAspect - Method findTaskById with parameters [1] will execute
 22:18:08.386 [http-nio-8080-exec-2] INFO  c.e.t.aspects.LoggingAspect - Method execute and returned: <200 OK OK,Task(id=1, title=Develop Blog Feature, description=Plan and implement a new feature for the company blog., status=COMPLETED, priority=HIGH, author=Employee(id=1, name=John Doe, role=AUTHOR, email=john.doe@example.com), executor=Employee(id=2, name=Jane Smith, role=EXECUTOR, email=jane.smith@example.com), comment=[The initial steps for Task 1 have been completed. Awaiting further instructions., Task 1 review meeting scheduled for tomorrow. Preparation underway.]),[]>
+23:03:29.665 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - Starting TaskManagementSystemApplication using Java 18.0.1.1 with PID 11094 (/Users/dmitriy/TheProjects/task-management-system/build/classes/java/main started by dmitriy in /Users/dmitriy/TheProjects/task-management-system)
+23:03:29.666 [restartedMain] DEBUG c.e.t.TaskManagementSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+23:03:29.667 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - No active profile set, falling back to 1 default profile: "default"
+23:03:35.573 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - Started TaskManagementSystemApplication in 6.259 seconds (process running for 7.536)
+23:04:53.019 [http-nio-8080-exec-1] INFO  c.e.t.aspects.LoggingAspect - Method create with parameters [Employee(id=null, name=Alex, role=AUTHOR, email=alex.doe@example.com)] will execute
+23:04:53.061 [http-nio-8080-exec-1] INFO  c.e.t.aspects.LoggingAspect - Method execute and returned: 200 OK
+23:05:31.567 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - Starting TaskManagementSystemApplication using Java 18.0.1.1 with PID 11136 (/Users/dmitriy/TheProjects/task-management-system/build/classes/java/main started by dmitriy in /Users/dmitriy/TheProjects/task-management-system)
+23:05:31.568 [restartedMain] DEBUG c.e.t.TaskManagementSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+23:05:31.569 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - No active profile set, falling back to 1 default profile: "default"
+23:05:37.300 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - Started TaskManagementSystemApplication in 6.177 seconds (process running for 7.167)
+23:05:48.234 [http-nio-8080-exec-2] INFO  c.e.t.aspects.LoggingAspect - Method create with parameters [Employee(id=null, name=Andrew, role=AUTHOR, email=andrew.doe@example.com)] will execute
+23:05:48.275 [http-nio-8080-exec-2] INFO  c.e.t.aspects.LoggingAspect - Method execute and returned: 204 NO_CONTENT
+23:34:11.839 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - Starting TaskManagementSystemApplication using Java 18.0.1.1 with PID 11592 (/Users/dmitriy/TheProjects/task-management-system/build/classes/java/main started by dmitriy in /Users/dmitriy/TheProjects/task-management-system)
+23:34:11.840 [restartedMain] DEBUG c.e.t.TaskManagementSystemApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+23:34:11.842 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - No active profile set, falling back to 1 default profile: "default"
+23:34:17.746 [restartedMain] INFO  c.e.t.TaskManagementSystemApplication - Started TaskManagementSystemApplication in 6.311 seconds (process running for 7.337)

@@ -37,27 +37,33 @@ public class EmployeeController {
     @ApiResponse(responseCode = "200", description = "Employee successfully deleted.")
     @ApiResponse(responseCode = "404", description = "Employee not found.")
     @DeleteMapping("/delete/{name}")
-    public HttpStatus deleteByname(@PathVariable String name) {
+    public ResponseEntity<Void> deleteByname(@PathVariable String name) {
         employeeService.deleteByname(name);
-        return HttpStatus.OK;
+        return ResponseEntity
+                .noContent()
+                .build();
     }
 
     @Operation(summary = "Delete employee by ID", description = "Delete an employee by their ID.")
-    @ApiResponse(responseCode = "200", description = "Employee successfully deleted.")
+    @ApiResponse(responseCode = "204", description = "Employee successfully deleted.")
     @ApiResponse(responseCode = "404", description = "Employee not found.")
     @DeleteMapping("/delete/{id}")
-    public HttpStatus deleteById(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         employeeService.deleteById(id);
-        return HttpStatus.OK;
+        return ResponseEntity
+                .noContent().
+                build();
     }
 
     @Operation(summary = "Create a new employee", description = "Create a new employee.")
-    @ApiResponse(responseCode = "200", description = "Employee created successfully.")
+    @ApiResponse(responseCode = "201", description = "Employee created successfully.")
     @ApiResponse(responseCode = "400", description = "Bad request.", content = @Content)
     @ApiResponse(responseCode = "500", description = "Internal server error.", content = @Content)
     @PostMapping
-    public HttpStatus create(@RequestBody Employee employee) {
+    public ResponseEntity<Void> create(@RequestBody Employee employee) {
         employeeService.create(employee);
-        return HttpStatus.OK;
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .build();
     }
 }
