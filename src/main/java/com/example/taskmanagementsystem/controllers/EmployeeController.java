@@ -24,4 +24,10 @@ public class EmployeeController {
                 .status(HttpStatus.OK)
                 .body(employeeService.readAll());
     }
+
+    @DeleteMapping("/delete/{name}")
+    public HttpStatus deleteByname(@PathVariable String name) {
+        employeeService.deleteByname(name);
+        return HttpStatus.OK;
+    }
 }
