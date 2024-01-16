@@ -1,0 +1,6 @@
+
+databaseChangeLog:
+  - include:
+      file: db/migration/schema.sql
+  - include:
+      file: db/migration/data.sql

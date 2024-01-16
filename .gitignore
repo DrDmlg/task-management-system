@@ -29,3 +29,5 @@ gradlew.bat
 gradlew
 settings.gradle
 gradle/
+application.properties
+
