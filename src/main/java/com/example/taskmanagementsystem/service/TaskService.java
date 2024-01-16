@@ -2,6 +2,7 @@ package com.example.taskmanagementsystem.service;
 
 import com.example.taskmanagementsystem.entity.Task;
 import com.example.taskmanagementsystem.enums.Role;
+import com.example.taskmanagementsystem.enums.Status;
 import com.example.taskmanagementsystem.repository.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -40,6 +41,11 @@ public class TaskService {
 
     public List<Task> findAllTasksByExecutorName(String name, Role role) {
         List<Task> tasks = taskRepository.findAllTasksByExecutorName(name, role);
+        return tasks;
+    }
+
+    public List<Task> findAllByStatus(Status status) {
+        List<Task> tasks = taskRepository.findAllByStatus(status);
         return tasks;
     }
 }

@@ -2,6 +2,7 @@ package com.example.taskmanagementsystem.controllers;
 
 import com.example.taskmanagementsystem.entity.Task;
 import com.example.taskmanagementsystem.enums.Role;
+import com.example.taskmanagementsystem.enums.Status;
 import com.example.taskmanagementsystem.service.TaskService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -54,5 +55,13 @@ public class TaskController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(taskService.findAllTasksByExecutorName(name, role));
+    }
+
+    @GetMapping("/status")
+    public ResponseEntity<List<Task>> findAllByStatus(
+           @RequestParam Status status) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(taskService.findAllByStatus(status));
     }
 }
