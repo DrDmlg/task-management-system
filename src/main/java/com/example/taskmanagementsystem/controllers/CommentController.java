@@ -2,6 +2,9 @@ package com.example.taskmanagementsystem.controllers;
 
 import com.example.taskmanagementsystem.entity.Comment;
 import com.example.taskmanagementsystem.service.CommentService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/comment")
+@Tag(name = "Comment controller", description = "Endpoints for managing comments")
 public class CommentController {
 
     private final CommentService commentService;
@@ -21,6 +25,9 @@ public class CommentController {
     }
 
     @GetMapping("/all")
+    @Operation(summary = "Get all comments", description = "Retrieve a list of all comments.")
+    @ApiResponse(responseCode = "200", description = "List of comments successfully retrieved.")
+    @ApiResponse(responseCode = "404", description = "No comments found.")
     public ResponseEntity<List<Comment>> readAll() {
         return  ResponseEntity
                 .status(HttpStatus.OK)
