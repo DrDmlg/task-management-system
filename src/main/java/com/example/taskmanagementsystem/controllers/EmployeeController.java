@@ -30,4 +30,10 @@ public class EmployeeController {
         employeeService.deleteByname(name);
         return HttpStatus.OK;
     }
+
+    @DeleteMapping("/delete/{id}")
+    public HttpStatus deleteById(@PathVariable Long id) {
+        employeeService.deleteById(id);
+        return HttpStatus.OK;
+    }
 }

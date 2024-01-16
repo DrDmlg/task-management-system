@@ -30,4 +30,15 @@ public class EmployeeService {
     public void deleteByname(String name) {
         employeeRepository.deleteByname(name);
     }
+
+    @Transactional
+    public void deleteById(Long id) {
+        Employee employeeById = getEmployeeById(id);
+
+        try {
+            employeeRepository.delete(employeeById);
+        } catch (Exception e) {
+
+        }
+    }
 }
