@@ -86,4 +86,11 @@ public class TaskController {
         taskService.create(task);
         return HttpStatus.OK;
     }
+
+    @DeleteMapping("delete/{id}")
+    public HttpStatus deleteById(
+            @PathVariable Long id) {
+        taskService.deleteById(id);
+        return HttpStatus.OK;
+    }
 }
