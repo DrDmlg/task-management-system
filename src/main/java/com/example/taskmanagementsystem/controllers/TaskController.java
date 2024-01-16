@@ -1,16 +1,16 @@
 package com.example.taskmanagementsystem.controllers;
 
 import com.example.taskmanagementsystem.entity.Task;
+import com.example.taskmanagementsystem.enums.Role;
 import com.example.taskmanagementsystem.service.TaskService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -36,5 +36,14 @@ public class TaskController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(taskService.getTaskById(id));
+    }
+
+    @GetMapping("/author")
+    public ResponseEntity<List<Task>> findAllTasksByAuthorName(
+            @RequestParam String name,
+            @RequestParam Role role) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(taskService.findAllTasksByAuthorName(name, role));
     }
 }
