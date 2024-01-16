@@ -28,9 +28,9 @@ public class CommentController {
     @ApiResponse(responseCode = "200", description = "List of comments successfully retrieved.")
     @ApiResponse(responseCode = "404", description = "No comments found.")
     @GetMapping("/all")
-    public ResponseEntity<List<Comment>> readAll() {
+    public ResponseEntity<List<Comment>> findAll() {
         return  ResponseEntity
                 .status(HttpStatus.OK)
-                .body(commentService.readAll());
+                .body(commentService.findAll());
     }
 }

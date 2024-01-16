@@ -18,7 +18,7 @@ public class CommentService {
         this.commentRepository = commentRepository;
     }
 
-    public List<Comment> readAll() {
+    public List<Comment> findAll() {
         List<Comment> allComment = commentRepository.findAll();
         if (allComment.isEmpty()) throw new CommentListEmptyException();
         return allComment;

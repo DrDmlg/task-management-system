@@ -1,4 +1,4 @@
 package com.example.taskmanagementsystem.exceptions;
 
-public class EmployeeListEmptyException extends RuntimeException{
+public class EmployeeListEmptyException extends RuntimeException {
 }

@@ -1,6 +1,5 @@
 package com.example.taskmanagementsystem.repository;
 
-
 import com.example.taskmanagementsystem.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 

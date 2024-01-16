@@ -30,7 +30,7 @@ class CommentServiceTest {
 
         when(commentRepository.findAll()).thenReturn(mockComments);
 
-        List<Comment> result = commentService.readAll();
+        List<Comment> result = commentService.findAll();
 
         assertEquals(mockComments.size(), result.size());
         assertEquals(mockComments, result);
