@@ -31,7 +31,7 @@ class EmployeeServiceTest {
     void testReadAll() {
         when(employeeRepository.findAll()).thenReturn(Arrays.asList(new Employee(), new Employee()));
 
-        List<Employee> employees = employeeService.readAll();
+        List<Employee> employees = employeeService.findAll();
 
         assertFalse(employees.isEmpty());
         assertEquals(2, employees.size());
@@ -41,7 +41,7 @@ class EmployeeServiceTest {
     void testReadAllEmptyList() {
         when(employeeRepository.findAll()).thenReturn(Collections.emptyList());
 
-        assertThrows(EmployeeListEmptyException.class, () -> employeeService.readAll());
+        assertThrows(EmployeeListEmptyException.class, () -> employeeService.findAll());
     }
 
     @Test

@@ -24,10 +24,10 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-    @GetMapping("/all")
     @Operation(summary = "Get all comments", description = "Retrieve a list of all comments.")
     @ApiResponse(responseCode = "200", description = "List of comments successfully retrieved.")
     @ApiResponse(responseCode = "404", description = "No comments found.")
+    @GetMapping("/all")
     public ResponseEntity<List<Comment>> readAll() {
         return  ResponseEntity
                 .status(HttpStatus.OK)

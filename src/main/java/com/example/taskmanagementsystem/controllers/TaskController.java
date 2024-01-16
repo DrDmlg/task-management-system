@@ -33,21 +33,21 @@ public class TaskController {
     @ApiResponse(responseCode = "200", description = "List of tasks successfully retrieved.")
     @ApiResponse(responseCode = "404", description = "No tasks found.")
     @GetMapping("/all")
-    public ResponseEntity<Page<Task>> readAll(Pageable pageable) {
+    public ResponseEntity<Page<Task>> findAllTasks(Pageable pageable) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(taskService.readAll(pageable));
+                .body(taskService.findAllTasks(pageable));
     }
 
     @Operation(summary = "Get task by ID", description = "Retrieve a task by its ID.")
     @ApiResponse(responseCode = "200", description = "Task successfully retrieved.")
     @ApiResponse(responseCode = "404", description = "Task not found.")
     @GetMapping("/get/{id}")
-    public ResponseEntity<Task> getTaskById(
+    public ResponseEntity<Task> findTaskById(
             @Parameter(description = "Task ID") @PathVariable Long id) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(taskService.getTaskById(id));
+                .body(taskService.findTaskById(id));
     }
 
     @Operation(summary = "Find tasks by author", description = "Find tasks based on the author's name and role.")

@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 public class EmployeeUtil {
 
     public static Employee convert(Employee employee) {
-        Employee newEmployee = new Employee();
-        newEmployee.setName(employee.getName());
-        newEmployee.setRole(employee.getRole());
-        newEmployee.setEmail(employee.getEmail());
-        return newEmployee;
+        return Employee.builder()
+                .name(employee.getName())
+                .role(employee.getRole())
+                .email(employee.getEmail())
+                .build();
     }
 }

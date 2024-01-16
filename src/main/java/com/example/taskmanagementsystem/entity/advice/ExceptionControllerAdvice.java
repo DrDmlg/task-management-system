@@ -22,15 +22,6 @@ public class ExceptionControllerAdvice {
                 .body(errorDetails);
     }
 
-    @ExceptionHandler(TasksListEmptyException.class)
-    public ResponseEntity<ErrorDetails> exceptionTasksListEmptyHandler(TasksListEmptyException ex) {
-        errorDetails.setMessage("The tasks list is empty");
-        log.error(errorDetails.getMessage(), ex);
-        return ResponseEntity
-                .badRequest()
-                .body(errorDetails);
-    }
-
     @ExceptionHandler(EmployeeListEmptyException.class)
     public ResponseEntity<ErrorDetails> exceptionEmployeeListEmptyHandler(EmployeeListEmptyException ex) {
         errorDetails.setMessage("The employee list is empty");

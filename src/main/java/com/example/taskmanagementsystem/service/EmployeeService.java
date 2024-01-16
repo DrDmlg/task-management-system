@@ -20,7 +20,7 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public List<Employee> readAll() {
+    public List<Employee> findAll() {
         List<Employee> employees = employeeRepository.findAll();
         if (employees.isEmpty()) throw new EmployeeListEmptyException();
         return employees;

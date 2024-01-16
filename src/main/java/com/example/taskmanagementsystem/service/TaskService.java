@@ -5,7 +5,6 @@ import com.example.taskmanagementsystem.entity.Task;
 import com.example.taskmanagementsystem.enums.Role;
 import com.example.taskmanagementsystem.enums.Status;
 import com.example.taskmanagementsystem.exceptions.TaskNotFoundException;
-import com.example.taskmanagementsystem.exceptions.TasksListEmptyException;
 import com.example.taskmanagementsystem.repository.TaskRepository;
 import com.example.taskmanagementsystem.util.TaskUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -28,13 +27,12 @@ public class TaskService {
         this.employeeService = employeeService;
     }
 
-    public Page<Task> readAll(Pageable pageable) {
+    public Page<Task> findAllTasks(Pageable pageable) {
         Page<Task> allTasks = taskRepository.findAll(pageable);
-        if (allTasks.isEmpty()) throw new TasksListEmptyException();
         return allTasks;
     }
 
-    public Task getTaskById(Long id) {
+    public Task findTaskById(Long id) {
         return taskRepository.findById(id).orElseThrow(TaskNotFoundException::new);
     }
 
@@ -58,7 +56,7 @@ public class TaskService {
 
     @Transactional
     public void updateTaskExecutorById(Long taskId, Long newExecutorId) {
-        Task task = getTaskById(taskId);
+        Task task = findTaskById(taskId);
         Employee executorId = employeeService.getEmployeeById(newExecutorId);
 
         task.setExecutor(executorId);
@@ -67,7 +65,7 @@ public class TaskService {
 
     @Transactional
     public void updateTaskStatus(Long taskId, Status status) {
-        Task task = getTaskById(taskId);
+        Task task = findTaskById(taskId);
         task.setStatus(status);
         taskRepository.save(task);
     }

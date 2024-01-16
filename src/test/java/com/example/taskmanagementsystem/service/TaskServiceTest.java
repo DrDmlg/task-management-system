@@ -5,7 +5,6 @@ import com.example.taskmanagementsystem.entity.Task;
 import com.example.taskmanagementsystem.enums.Role;
 import com.example.taskmanagementsystem.enums.Status;
 import com.example.taskmanagementsystem.exceptions.TaskNotFoundException;
-import com.example.taskmanagementsystem.exceptions.TasksListEmptyException;
 import com.example.taskmanagementsystem.repository.TaskRepository;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -45,17 +44,9 @@ class TaskServiceTest {
 
         when(taskRepository.findAll(any(Pageable.class))).thenReturn(allTasks);
 
-        Page<Task> resultPage = taskService.readAll(Pageable.unpaged());
+        Page<Task> resultPage = taskService.findAllTasks(Pageable.unpaged());
 
         assertEquals(1, resultPage.getSize());
-    }
-
-    @Test
-    void testReadAll_ShouldThrowException_WhenListIsNull() {
-
-        when(taskRepository.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(Collections.emptyList()));
-
-        assertThrows(TasksListEmptyException.class, () -> taskService.readAll(Pageable.unpaged()));
     }
 
     @Test
@@ -64,7 +55,7 @@ class TaskServiceTest {
 
         when(taskRepository.findById(1L)).thenReturn(Optional.of(task));
 
-        Task result = taskService.getTaskById(1L);
+        Task result = taskService.findTaskById(1L);
 
         assertEquals(task, result);
 
@@ -76,7 +67,7 @@ class TaskServiceTest {
 
         when(taskRepository.findById(1L)).thenReturn(Optional.empty());
 
-        assertThrows(TaskNotFoundException.class, () -> taskService.getTaskById(1L));
+        assertThrows(TaskNotFoundException.class, () -> taskService.findTaskById(1L));
 
         verify(taskRepository, times(1)).findById(1L);
     }
@@ -111,12 +102,12 @@ class TaskServiceTest {
         Task task = new Task();
         Employee executor = new Employee();
 
-        when(taskService.getTaskById(anyLong())).thenReturn(task);
+        when(taskService.findTaskById(anyLong())).thenReturn(task);
         when(employeeService.getEmployeeById(anyLong())).thenReturn(executor);
 
         taskService.updateTaskExecutorById(1L, 2L);
 
-        verify(taskService, times(1)).getTaskById(1L);
+        verify(taskService, times(1)).findTaskById(1L);
         verify(employeeService, times(1)).getEmployeeById(2L);
         verify(taskRepository, times(1)).save(task);
     }

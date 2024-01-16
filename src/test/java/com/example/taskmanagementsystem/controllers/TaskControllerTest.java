@@ -34,9 +34,9 @@ class TaskControllerTest {
 
         Page<Task> mockTaskPage = new PageImpl<>(List.of(new Task()));
 
-        when(taskService.readAll(any(Pageable.class))).thenReturn(mockTaskPage);
+        when(taskService.findAllTasks(any(Pageable.class))).thenReturn(mockTaskPage);
 
-        ResponseEntity<Page<Task>> responseEntity = taskController.readAll(Pageable.unpaged());
+        ResponseEntity<Page<Task>> responseEntity = taskController.findAllTasks(Pageable.unpaged());
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(mockTaskPage, responseEntity.getBody());
@@ -48,9 +48,9 @@ class TaskControllerTest {
 
         Long specificId = 1L;
 
-        when(taskService.getTaskById(any(Long.class))).thenReturn(task);
+        when(taskService.findTaskById(any(Long.class))).thenReturn(task);
 
-        ResponseEntity<Task> response = taskController.getTaskById(specificId);
+        ResponseEntity<Task> response = taskController.findTaskById(specificId);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(task, response.getBody());
