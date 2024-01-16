@@ -73,9 +73,4 @@ public class TaskService {
         Task convertTask = TaskUtil.convert(task);
         taskRepository.save(convertTask);
     }
-
-    @Transactional
-    public void deleteById(Long id) {
-        taskRepository.deleteById(id);
-    }
 }

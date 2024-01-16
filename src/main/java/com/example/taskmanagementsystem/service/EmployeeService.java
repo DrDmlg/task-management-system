@@ -25,4 +25,9 @@ public class EmployeeService {
     public Employee getEmployeeById(Long employeeId) {
         return employeeRepository.findById(employeeId).orElseThrow();
     }
+
+    @Transactional
+    public void deleteByname(String name) {
+        employeeRepository.deleteByname(name);
+    }
 }
