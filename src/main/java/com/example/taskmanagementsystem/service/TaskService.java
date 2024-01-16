@@ -1,5 +1,6 @@
 package com.example.taskmanagementsystem.service;
 
+import com.example.taskmanagementsystem.entity.Employee;
 import com.example.taskmanagementsystem.entity.Task;
 import com.example.taskmanagementsystem.enums.Role;
 import com.example.taskmanagementsystem.enums.Status;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -47,5 +49,14 @@ public class TaskService {
     public List<Task> findAllByStatus(Status status) {
         List<Task> tasks = taskRepository.findAllByStatus(status);
         return tasks;
+    }
+
+    @Transactional
+    public void updateTaskExecutorById(Long taskId, Long newExecutorId) {
+        Task task = getTaskById(taskId);
+        Employee executorId = employeeService.getEmployeeById(newExecutorId);
+
+        task.setExecutor(executorId);
+        taskRepository.save(task);
     }
 }

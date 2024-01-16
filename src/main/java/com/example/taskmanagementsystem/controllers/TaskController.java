@@ -59,10 +59,17 @@ public class TaskController {
 
     @GetMapping("/status")
     public ResponseEntity<List<Task>> findAllByStatus(
-           @RequestParam Status status) {
+            @RequestParam Status status) {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(taskService.findAllByStatus(status));
+    }
 
+    @PutMapping("/change/executor")
+    public HttpStatus updateTaskEntityByExecutorId(
+            @RequestParam Long taskId,
+            @RequestParam Long newExecutorId) {
+        taskService.updateTaskExecutorById(taskId, newExecutorId);
+        return HttpStatus.OK;
     }
 }
