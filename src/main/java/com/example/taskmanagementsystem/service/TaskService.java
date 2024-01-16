@@ -21,4 +21,8 @@ public class TaskService {
         Page<Task> allTasks = taskRepository.findAll(pageable);
         return allTasks;
     }
+
+    public Task getTaskById(Long id) {
+        return taskRepository.findById(id).orElseThrow();
+    }
 }
