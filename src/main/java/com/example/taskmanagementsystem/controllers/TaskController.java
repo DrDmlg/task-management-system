@@ -46,4 +46,13 @@ public class TaskController {
                 .status(HttpStatus.OK)
                 .body(taskService.findAllTasksByAuthorName(name, role));
     }
+
+    @GetMapping("/executor")
+    public ResponseEntity<List<Task>> findAllTasksByExecutorName(
+            @RequestParam String name,
+            @RequestParam Role role) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(taskService.findAllTasksByExecutorName(name, role));
+    }
 }

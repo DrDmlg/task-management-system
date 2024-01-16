@@ -38,5 +38,8 @@ public class TaskService {
         return tasks;
     }
 
-
+    public List<Task> findAllTasksByExecutorName(String name, Role role) {
+        List<Task> tasks = taskRepository.findAllTasksByExecutorName(name, role);
+        return tasks;
+    }
 }
