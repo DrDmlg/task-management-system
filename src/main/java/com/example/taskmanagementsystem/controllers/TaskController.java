@@ -63,5 +63,6 @@ public class TaskController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(taskService.findAllByStatus(status));
+
     }
 }
