@@ -1,6 +1,7 @@
 package com.example.taskmanagementsystem.service;
 
 import com.example.taskmanagementsystem.entity.Comment;
+import com.example.taskmanagementsystem.exceptions.CommentListEmptyException;
 import com.example.taskmanagementsystem.repository.CommentRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class CommentService {
 
     public List<Comment> readAll() {
         List<Comment> allComment = commentRepository.findAll();
+        if (allComment.isEmpty()) throw new CommentListEmptyException();
         return allComment;
     }
 }

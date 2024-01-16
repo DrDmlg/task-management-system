@@ -2,7 +2,6 @@ package com.example.taskmanagementsystem.util;
 
 import com.example.taskmanagementsystem.entity.Task;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class TaskUtil {
