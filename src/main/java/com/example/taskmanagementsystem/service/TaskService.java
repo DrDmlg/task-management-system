@@ -59,4 +59,11 @@ public class TaskService {
         task.setExecutor(executorId);
         taskRepository.save(task);
     }
+
+    @Transactional
+    public void updateTaskStatus(Long taskId, Status status) {
+        Task task = getTaskById(taskId);
+        task.setStatus(status);
+        taskRepository.save(task);
+    }
 }

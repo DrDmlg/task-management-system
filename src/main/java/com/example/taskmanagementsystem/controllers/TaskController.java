@@ -72,4 +72,11 @@ public class TaskController {
         taskService.updateTaskExecutorById(taskId, newExecutorId);
         return HttpStatus.OK;
     }
+
+    public HttpStatus updateTaskStatus(
+            @RequestParam Long taskId,
+            @RequestParam Status status) {
+        taskService.updateTaskStatus(taskId, status);
+        return HttpStatus.OK;
+    }
 }
