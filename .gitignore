@@ -16,6 +16,7 @@ build/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+application.properties
 
 ### IntelliJ IDEA ###
 .idea
@@ -29,5 +30,3 @@ gradlew.bat
 gradlew
 settings.gradle
 gradle/
-application.properties
-
