@@ -50,29 +50,19 @@ public class TaskController {
                 .body(taskService.findTaskById(id));
     }
 
-    @Operation(summary = "Find tasks by author", description = "Find tasks based on the author's name and role.")
-    @ApiResponse(responseCode = "200", description = "List of tasks by author successfully retrieved.")
+
+    @GetMapping("/roles")
+    @Operation(summary = "Find tasks by name and role", description = "Find tasks based on the name and role of the author.")
+    @ApiResponse(responseCode = "200", description = "List of tasks by name and role successfully retrieved.")
     @ApiResponse(responseCode = "404", description = "No tasks found.")
-    @GetMapping("/authors")
-    public ResponseEntity<List<Task>> findAllTasksByAuthorName(
-            @Parameter(description = "Author's name") @RequestParam String name,
-            @Parameter(description = "Author's role") @RequestParam Role role) {
+    public ResponseEntity<List<Task>> findAllTasksByNameAndRole(
+            @Parameter(description = "Author's name", required = true) @RequestParam String name,
+            @Parameter(description = "Author's role") @RequestParam(required = false) Role role) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(taskService.findAllTasksByAuthorName(name, role));
+                .body(taskService.findAllTasksByNameAndRole(name, role));
     }
 
-    @Operation(summary = "Find tasks by executor", description = "Find tasks based on the executor's name and role.")
-    @ApiResponse(responseCode = "200", description = "List of tasks by executor successfully retrieved.")
-    @ApiResponse(responseCode = "404", description = "No tasks found.")
-    @GetMapping("/executors")
-    public ResponseEntity<List<Task>> findAllTasksByExecutorName(
-            @Parameter(description = "Executor's name") @RequestParam String name,
-            @Parameter(description = "Executor's role") @RequestParam Role role) {
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(taskService.findAllTasksByExecutorName(name, role));
-    }
 
     @Operation(summary = "Find tasks by status", description = "Find tasks based on the task status.")
     @ApiResponse(responseCode = "200", description = "List of tasks by status successfully retrieved.")

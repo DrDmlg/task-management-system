@@ -58,4 +58,22 @@ public class ExceptionControllerAdvice {
                 .status(HttpStatus.NOT_FOUND)
                 .body(errorDetails);
     }
+
+    @ExceptionHandler(TaskByEmployeeNameWasNotFound.class)
+    public ResponseEntity<ErrorDetails> exceptionTaskByEmployeeNameWasNotFoundHandler(TaskByEmployeeNameWasNotFound ex) {
+        errorDetails.setMessage(ex.getMessage());
+        log.error(errorDetails.getMessage(), ex);
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(errorDetails);
+    }
+
+    @ExceptionHandler(TaskByStatusNotFound.class)
+    public ResponseEntity<ErrorDetails> exceptionTaskByStatusNotFoundHandler(TaskByStatusNotFound ex) {
+        errorDetails.setMessage(ex.getMessage());
+        log.error(errorDetails.getMessage(), ex);
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(errorDetails);
+    }
 }

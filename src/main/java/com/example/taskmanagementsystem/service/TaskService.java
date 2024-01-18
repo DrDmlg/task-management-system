@@ -4,6 +4,8 @@ import com.example.taskmanagementsystem.entity.Employee;
 import com.example.taskmanagementsystem.entity.Task;
 import com.example.taskmanagementsystem.enums.Role;
 import com.example.taskmanagementsystem.enums.Status;
+import com.example.taskmanagementsystem.exceptions.TaskByEmployeeNameWasNotFound;
+import com.example.taskmanagementsystem.exceptions.TaskByStatusNotFound;
 import com.example.taskmanagementsystem.exceptions.TaskNotFoundException;
 import com.example.taskmanagementsystem.repository.TaskRepository;
 import com.example.taskmanagementsystem.util.TaskUtil;
@@ -33,24 +35,18 @@ public class TaskService {
     }
 
     public Task findTaskById(Long id) {
-        return taskRepository.findById(id).orElseThrow(TaskNotFoundException::new);
+        return taskRepository.findById(id).orElseThrow(() -> new TaskNotFoundException(id));
     }
 
-    public List<Task> findAllTasksByAuthorName(String name, Role role) {
-        List<Task> tasks = taskRepository.findAllTasksByAuthorName(name, role);
-        if (tasks.isEmpty()) throw new TaskNotFoundException();
-        return tasks;
-    }
-
-    public List<Task> findAllTasksByExecutorName(String name, Role role) {
-        List<Task> tasks = taskRepository.findAllTasksByExecutorName(name, role);
-        if (tasks.isEmpty()) throw new TaskNotFoundException();
+    public List<Task> findAllTasksByNameAndRole(String name, Role role) {
+        List<Task> tasks = taskRepository.findAllTasksByNameAndRole(name, role);
+        if (tasks.isEmpty()) throw new TaskByEmployeeNameWasNotFound(name);
         return tasks;
     }
 
     public List<Task> findAllByStatus(Status status) {
         List<Task> tasks = taskRepository.findAllByStatus(status);
-        if (tasks.isEmpty()) throw new TaskNotFoundException();
+        if (tasks.isEmpty()) throw new TaskByStatusNotFound(status);
         return tasks;
     }
 
@@ -78,7 +74,7 @@ public class TaskService {
 
     @Transactional
     public void deleteById(Long id) {
-        if (!taskRepository.existsById(id)) throw new TaskNotFoundException();
+        if (!taskRepository.existsById(id)) throw new TaskNotFoundException(id);
         taskRepository.deleteById(id);
     }
 }
