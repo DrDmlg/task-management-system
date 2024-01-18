@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Setter
 @Component
 @PropertySource("classpath:application-private.properties")
-public class PrivateConfig {
+public class EnvironmentSettingConfig {
 
     @Value("${spring.datasource.driver-class-name}")
     private String driverClassName;
