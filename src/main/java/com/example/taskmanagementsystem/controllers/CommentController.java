@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/comment")
+@RequestMapping("/comments")
 @Tag(name = "Comment controller", description = "Endpoints for managing comments")
 public class CommentController {
 

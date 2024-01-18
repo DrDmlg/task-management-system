@@ -1,6 +1,7 @@
 package com.example.taskmanagementsystem.entity;
 
 import com.example.taskmanagementsystem.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,6 +17,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
     @Column(name = "name")
@@ -23,6 +25,7 @@ public class Employee {
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "role")
+    @JsonIgnore
     private Role role;
 
     @Column(name = "email", unique = true)

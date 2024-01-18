@@ -26,7 +26,9 @@ CREATE TABLE task
 -- changeset dorokhov:3
 CREATE TABLE comment
 (
-    task_id BIGINT AUTO_INCREMENT,
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    task_id BIGINT,
     comment VARCHAR(255),
+
     FOREIGN KEY (task_id) REFERENCES task (id) ON DELETE CASCADE
 );

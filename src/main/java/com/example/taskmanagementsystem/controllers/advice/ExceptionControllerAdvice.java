@@ -1,4 +1,4 @@
-package com.example.taskmanagementsystem.entity.advice;
+package com.example.taskmanagementsystem.controllers.advice;
 
 import com.example.taskmanagementsystem.exceptions.*;
 import com.example.taskmanagementsystem.model.ErrorDetails;

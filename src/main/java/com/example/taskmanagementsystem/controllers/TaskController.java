@@ -19,7 +19,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/tasks")
 @Tag(name = "Task controller", description = "Endpoints for managing tasks")
 public class TaskController {
 

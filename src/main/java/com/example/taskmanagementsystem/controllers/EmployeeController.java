@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/employees")
 @Tag(name = "Employee controller", description = "Endpoints for managing employees")
 public class EmployeeController {
 
@@ -26,7 +26,7 @@ public class EmployeeController {
     @Operation(summary = "Get all employees", description = "Retrieve a list of all employees.")
     @ApiResponse(responseCode = "200", description = "List of employees successfully retrieved.")
     @ApiResponse(responseCode = "404", description = "No employees found.")
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Employee>> findAll() {
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -59,7 +59,7 @@ public class EmployeeController {
     @ApiResponse(responseCode = "201", description = "Employee created successfully.")
     @ApiResponse(responseCode = "400", description = "Bad request.", content = @Content)
     @ApiResponse(responseCode = "500", description = "Internal server error.", content = @Content)
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Void> create(@RequestBody Employee employee) {
         employeeService.create(employee);
         return ResponseEntity
