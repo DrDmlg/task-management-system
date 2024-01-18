@@ -17,6 +17,7 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 logs
+.env
 
 ### IntelliJ IDEA ###
 .idea
@@ -30,3 +31,4 @@ gradlew.bat
 gradlew
 settings.gradle
 gradle/
+/src/main/resources/application-private.properties
