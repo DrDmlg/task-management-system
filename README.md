@@ -101,7 +101,8 @@ Congratulations! You've successfully installed the Task Management System. Feel 
 Demonstration of a request to the endpoint to retrieve information about a task by its identifier.
 
 <p align="center"> <img src="logo/endpoint.png" width="1000" height="30"></p>
-<hr>
+
+<p align="center"> <img src="logo/arrow.gif" width="50" height="50"></p>
 
 <p align="center"> <img src="logo/demo.gif" width="500" height="330"></p>
 <hr>
