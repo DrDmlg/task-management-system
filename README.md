@@ -98,6 +98,14 @@ Congratulations! You've successfully installed the Task Management System. Feel 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+Demonstration of a request to the endpoint to retrieve information about a task by its identifier.
+
+<p align="center"> <img src="logo/endpoint.png" width="1000" height="30"></p>
+<hr>
+
+<p align="center"> <img src="logo/demo.gif" width="500" height="330"></p>
+<hr>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
